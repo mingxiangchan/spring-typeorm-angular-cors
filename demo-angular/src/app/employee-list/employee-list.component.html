@@ -1,4 +1,5 @@
 <h4>Employees</h4>
+<button (click)="createEmployee()">Create Employee</button>
 <ul *ngFor="let employee of employees">
-    <li>{{ employee.firstName}} {{ employee.firstName}}</li>
+    <li>{{employee.id}}. {{ employee.firstName}} {{ employee.firstName}}</li>
 </ul>

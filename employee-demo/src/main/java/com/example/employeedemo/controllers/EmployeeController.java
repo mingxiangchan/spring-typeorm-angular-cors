@@ -10,6 +10,9 @@ import com.example.employeedemo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 /**
@@ -22,9 +25,15 @@ public class EmployeeController {
     private EmployeeRepository repository;
 
 
-    @GetMapping(value="/")
+    @GetMapping(value="/", produces="application/json")
     public List<Employee> getEmployees() {
         return repository.findAll();
+    }
+    
+    @PostMapping(value="/createEmployee", produces="application/json")
+    public Employee postMethodName(@RequestBody Employee employee) {
+        repository.save(employee);
+        return employee;
     }
     
     
